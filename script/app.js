@@ -72,6 +72,7 @@ searchBtn.addEventListener("click", () => {
   if (!ipRegEx.test(userSearchValue)) {
     document.getElementById('error').style.display = "block"
   } else {
+    document.getElementById('error').style.display = "none"
     const mapContainer = document.getElementById("map");
     mapContainer.innerHTML = '<div id="mapid"></div>';
     httpRequest(userSearchValue);
