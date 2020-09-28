@@ -57,7 +57,7 @@ httpRequest("");
 
 const searchIn = document.querySelector(".imageContainer__inputs input");
 const searchBtn = document.querySelector(".imageContainer__inputs button");
-const ipRegEx = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b /
+const ipRegEx = /^\d{1,3}\.\d{1,3}\.\d{1,3}.\d{1,3}$/
 
 let userSearchValue;
 
@@ -71,10 +71,12 @@ searchIn.addEventListener("change", (e) => search(e));
 searchBtn.addEventListener("click", () => {
   if (!ipRegEx.test(userSearchValue)) {
     document.getElementById('error').style.display = "block"
+    console.log('fail')
   } else {
     document.getElementById('error').style.display = "none"
     const mapContainer = document.getElementById("map");
     mapContainer.innerHTML = '<div id="mapid"></div>';
     httpRequest(userSearchValue);
+    console.log('success')
   }
 });
